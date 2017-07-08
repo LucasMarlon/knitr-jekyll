@@ -35,7 +35,10 @@ series %>%
     ggplot(aes(x = UserRating)) + 
     geom_histogram(binwidth = .5, fill = "blue", color = "black") + 
     geom_rug() +
-  labs(title = "Classificação do usuário durante a primeira temporada", x = "Classificação do usuário", y = "Frequência")
+    labs(title = "Classificação do usuário durante a primeira temporada", 
+         x = "Classificação do usuário", 
+         y = "Frequência") +
+    theme(plot.title = element_text(hjust = 0.5))
 ```
 
 
@@ -50,7 +53,10 @@ series %>%
     geom_histogram(binwidth = .5, fill = "blue", color = "black") + 
     scale_y_continuous(breaks=seq(1, 10, 1))+
     geom_rug() +
-  labs(title = "Classificação do usuário durante a primeira temporada", x = "Classificação do usuário", y = "Frequência")
+    labs(title = "Classificação do usuário durante a primeira temporada", 
+         x = "Classificação do usuário", 
+         y = "Frequência") +
+    theme(plot.title = element_text(hjust = 0.5))
 ```
 
 **Modern Family**
@@ -64,7 +70,10 @@ series %>%
     geom_histogram(binwidth = .5, fill = "blue", color = "black") + 
     scale_y_continuous(breaks=seq(1, 20, 5))+
     geom_rug() +
-  labs(title = "Classificação do usuário durante a primeira temporada", x = "Classificação do usuário", y = "Frequência")
+    labs(title = "Classificação do usuário durante a primeira temporada", 
+         x = "Classificação do usuário", 
+         y = "Frequência") +
+    theme(plot.title = element_text(hjust = 0.5))
 ```
 
 No gráfico abaixo podemos observar a distribuição da classificação dos usuários para as três séries durante a primeira temporada de cada uma delas. Através dele também conseguimos observar as métricas média e mediana, além dos valores extremos (máximo e mínimo).   
@@ -82,7 +91,10 @@ medias = series %>%
              alpha = .7, 
              color = "blue") +
   geom_point(data = medias, colour = "red", size = 2) +
-labs(title = "Box-plot da classifição do usuário para a primeira temporada", x = "Série", y = "Classificação do usuário")
+  labs(title = "Box-plot da classifição do usuário para a primeira temporada", 
+       x = "Série", 
+       y = "Classificação do usuário") +
+    theme(plot.title = element_text(hjust = 0.5))
 
 ```
 

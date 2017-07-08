@@ -37,7 +37,10 @@ medias = series %>%
              alpha = .7, 
              color = "blue") +
   geom_point(data = medias, colour = "red", size = 2) +
-labs(title = "Box-plot da classificação do usuário", x = "Série", y = "Classificação do usuário")
+  labs(title = "Box-plot da classificação do usuário", 
+       x = "Série", 
+       y = "Classificação do usuário") +
+  theme(plot.title = element_text(hjust = 0.5))
 
 ```
 
@@ -59,7 +62,10 @@ series %>%
     ggplot(aes(x = UserRating)) + 
     geom_histogram(binwidth = .5, fill = "blue", color = "black") + 
     geom_rug() +
-  labs(title = "Histograma da classificação do usuário", x = "Classificação do usuário", y = "Frequência")
+    labs(title = "Histograma da classificação do usuário", 
+       x = "Classificação do usuário", 
+       y = "Frequência") +
+    theme(plot.title = element_text(hjust = 0.5))
 ```
 
 **How I Met Your Mother** 
@@ -72,7 +78,10 @@ series %>%
     ggplot(aes(x = UserRating)) + 
     geom_histogram(binwidth = .5, fill = "blue", color = "black") + 
     geom_rug() +
-  labs(title = "Histograma da classificação do usuário", x = "Classificação do usuário", y = "Frequência")
+    labs(title = "Histograma da classificação do usuário", 
+         x = "Classificação do usuário", 
+         y = "Frequência") +
+    theme(plot.title = element_text(hjust = 0.5))
 ```
 
 **Modern Family**
@@ -85,7 +94,10 @@ series %>%
     ggplot(aes(x = UserRating)) + 
     geom_histogram(binwidth = .5, fill = "blue", color = "black") + 
     geom_rug() +
-  labs(title = "Histograma da classificação do usuário", x = "Classificação do usuário", y = "Frequência")
+    labs(title = "Histograma da classificação do usuário", 
+         x = "Classificação do usuário", 
+         y = "Frequência") +
+    theme(plot.title = element_text(hjust = 0.5))
 ```
 
 **Segunda pergunta** 
@@ -101,7 +113,10 @@ series %>%  filter(series_name == "Friends") %>%
   geom_line() + 
   geom_point() +
   facet_wrap(~season) +
-  labs(title = "Classificação do usuário ao longo da temporada", x = "Episódio", y = "Classificação do usuário")
+  labs(title = "Classificação do usuário ao longo da temporada", 
+       x = "Episódio", 
+       y = "Classificação do usuário") +
+    theme(plot.title = element_text(hjust = 0.5))
 ```
 
 Como podemos observar nos gráficos acima, de modo geral, a série *Friends* possui grande irregularidade de qualidade de episódios na maioria de suas temporadas, apresentando alguns picos altos e outros baixos nas temporadas 4, 5 e 8, por exemplo.
@@ -115,7 +130,10 @@ series %>%  filter(series_name == "How I Met Your Mother") %>%
   geom_line() + 
   geom_point() +
   facet_wrap(~season) +
-  labs(title = "Classificação do usuário ao longo da temporada", x = "Episódio", y = "Classificação do usuário")
+  labs(title = "Classificação do usuário ao longo da temporada", 
+       x = "Episódio", 
+       y = "Classificação do usuário") +
+    theme(plot.title = element_text(hjust = 0.5))
 ```
 
 Como podemos observar nos gráficos acima, de modo geral a série *How I Met Your Mother* possui pequena irregularidade de qualidade de episódios na maioria de suas temporadas. Porém, o que nos chama atenção é a irregularidade de qualidade de episódios da última temporada (9), o que nos mostra que por sinal os fãs da série não ficaram nada satisfeitos com o desfecho da temporada. 
@@ -130,7 +148,10 @@ series %>%  filter(series_name == "Modern Family") %>%
   geom_line() + 
   geom_point() +
   facet_wrap(~season) +
-  labs(title = "Classificação do usuário ao longo da temporada", x = "Episódio", y = "Classificação do usuário")
+  labs(title = "Classificação do usuário ao longo da temporada", 
+       x = "Episódio", 
+       y = "Classificação do usuário") +
+    theme(plot.title = element_text(hjust = 0.5))
 ```
 
 Como podemos observar nos gráficos acima, de modo geral a série *Modern Family* também possui pequena irregularidade de qualidade de episódios na maioria de suas temporadas, apresentando alguns picos altos nas temporadas 5 e 6, por exemplo. E na última temporada (8) nos chama bastante atenção, visto que possui grande irregularidade de qualidade dos episódios, com picos altos e baixos. 
