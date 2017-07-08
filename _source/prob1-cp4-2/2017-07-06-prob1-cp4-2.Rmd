@@ -1,0 +1,62 @@
+---
+layout: post
+title:  Última temporada de "How I Met Your Mother"
+date: `r Sys.time()`
+published: true
+tags: [htmlwidgets, r]
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library("dplyr")
+library("tidyr")
+library("ggplot2")
+library("readr")
+
+dados = read_csv(file = "dados/series_from_imdb.csv")
+series = dados %>% filter(series_name %in% c("Friends", "How I Met Your Mother", "Modern Family"))
+```
+
+### Pergunta 
+
+**Existem repercussões de que os fãs de How I Met Your Mother (HIMYM) não ficaram muito satisfeitos com o desfecho da nona temporada da série. A partir de qual(is) episódio(s) essa insatisfação ficou evidente?** 
+
+Há poucos meses comecei a assistir a série *How I Met Your Mother*, e todos as pessoas que conheço que já terminaram de assistir a última temporada (9) disseram que talvez eu não fosse gostar, alguns chegaram a afirmar que eu iria amar ou odiar o grande desfecho. Desde então eu procuro tempo para chegar a tão esperada nona temporada, mas ainda não cheguei, rsrs... Enfim, foi por isso que pensei nessa pergunta, a qual achei um questionamento interessante e vou tentar entender o que aconteceu através do gráfico abaixo.
+
+```{r, echo=FALSE}
+series %>%  
+  filter(series_name == "How I Met Your Mother", season == 9) %>% 
+  ggplot(aes(x = season_ep, y = UserRating)) + 
+  geom_line() + 
+  geom_point(color = "blue", size = 2) +
+  scale_x_continuous(breaks=seq(1, 25, 1))+
+  labs(title = "Classificação do usuário ao longo da nona temporada de HIMYM", x = "Episódio", y = "Classificação do usuário")
+```
+
+No gráfico acima, podemos observar que a partir do segundo episódio os dados já nos mostram uma pequena queda da classificação dos usuários, mas é lá no décimo primeiro episódio que aparece uma das piores classificações da temporada. Nos dois próximos episódios observamos uma melhora na classificação, porém depois volta a cair, depois sobe novamente e assim continua oscilando até o final da temporada, onde no último episódio da temporada observamos a pior classificação segundo o IMDB. O que nos faz acreditar que meus amigos estejam certos em relação a insatisfação dos fãs de HIMYM. Mesmo assim continuo curioso para assistir a série até o fim!
+
+Será que a que variável **UserVotes** nos traz uma conclusão diferente em relação a pergunta?  
+
+```{r, echo=FALSE}
+series %>%  
+  filter(series_name == "How I Met Your Mother", season == 9) %>% 
+  ggplot(aes(x = season_ep, y = UserVotes)) + 
+  geom_line() + 
+  geom_point(color = "blue", size = 2) +
+  scale_x_continuous(breaks=seq(1, 25, 1))+
+  labs(title = "Número de votos ao longo da nona temporada de HIMYM", x = "Episódio", y = "Número de votos")
+```
+
+No gráfico acima podemos observar que no episódio 11 os dados já nos mostram uma alta no número de votos. Essa alta volta a acontecer nos episódios 14 e 16, depois só observamos novamente uma alta após o episódio 22. Aqui também podemos observar uma coisa bem interessante, o número de votos subiu bastante nos episódios em que as avaliações dos usuários assumiram os valores de pico, tanto para as altas avaliações quanto para as baixas. 
+
+```{r, echo=FALSE}
+series %>% 
+  group_by(series_name) %>%
+  filter(series_name == "How I Met Your Mother", season == 9) %>% 
+  summarise(correlacao_linear = cor(UserVotes, UserRating, 
+                                      method = "pearson"), 
+            correlacao_kendall = cor(UserVotes, UserRating, 
+                                       method = "kendall"))
+```
+
+A tabela acima nos mostra que o coeficiente de correlação linear está distante tanto de -1 quanto de +1. Então, podemos dizer que existe uma correlação linear fraca entre a classificação dos usuários e o número de votos dos usuários, ou seja, o número de votos não irá necessariamente significar uma classificação boa ou ruim segundo o IMDB.
