@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Problema 1 - Checkpoint 1"
+title:  "Avaliando Séries"
 date: `r Sys.time()`
 published: true
 tags: [htmlwidgets, r]
