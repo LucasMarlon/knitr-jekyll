@@ -1,10 +1,10 @@
-# Site settings
+﻿# Site settings
 title: Portfólio - Análise de Dados 1
 email: lucas.marques@ccc.ufcg.edu.br
 description: > # this means to ignore newlines until "baseurl:"
   Site em forma de blog com postagens relacionadas
   as atividades desenvolvidas na disciplina Análise de Dados 1.
-baseurl: "/portfolioad1" # the subpath of your site, e.g. /blog/
+baseurl: "/portfolioad1/" # the subpath of your site, e.g. /blog/
 url: "https://LucasMarlon.github.io/portfolioad1/" # the base hostname & protocol for your site
 github_username:  LucasMarlon
 permalink: /:year/:month/:title.html
