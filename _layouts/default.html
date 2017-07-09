@@ -1,12 +1,20 @@
 <!DOCTYPE html>
-<html>
-  {% include head.html %}
-  <body>
-    {% include header.html %}
-    <article class="group">
-      {{ content }}
-    </article>
-    {% include print-footer.html %}
-    {% include footer.html %}
-  </body>
+<html lang="en">
+
+	<head>
+		{% include head.html %}
+	</head>
+
+	<body>
+
+		{% include header.html %}
+
+		<main>
+			{{ content | replace: '&#8617;', '&#8617;&#xfe0e;' }}
+		</main>
+
+		{% include footer.html %}
+
+	</body>
+
 </html>

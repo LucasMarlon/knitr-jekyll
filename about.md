@@ -4,4 +4,5 @@ title: About
 permalink: /about/
 ---
 
-Site em forma de blog com postagens relacionadas as atividades desenvolvidas na disciplina Análise de Dados 1.
+Olá, meu nome é Lucas Marlon. Sou estudante do curso de Ciência da Computação pela UFCG.
+Este blog possui postagens relacionadas as atividades desenvolvidas na disciplina Análise de Dados 1.
